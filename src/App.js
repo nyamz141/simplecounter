@@ -16,14 +16,14 @@ function App(){
             <div className="card counter-body shadow p-3 mb-5 bg-body rounded">
                 <div className="card-body">
                     <div className="row">
-                        <h5 className="card-title count-value mb-5 mt-5">{counter}</h5>
+                        <h5 data-testid="heading-value" className="card-title count-value mb-5 mt-5" id="display-value">{counter}</h5>
                     </div>
                     <div className="row">
                         <div className="col-sm-6">
-                            <button className='btn btn-success counter-button mb-2' onClick={increment}>Increment</button>
+                            <button data-testid="increment-button-test" className='btn btn-success counter-button mb-2' onClick={increment}>Increment</button>
                         </div>
                         <div className="col-sm-6">
-                            <button className='btn btn-warning counter-button mb-2' onClick={decrement}>Decrement</button>
+                            <button data-testid="decrement-button-test" className='btn btn-warning counter-button mb-2' onClick={decrement}>Decrement</button>
                         </div>
                     </div>
                 </div>
