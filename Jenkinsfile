@@ -6,17 +6,17 @@ pipeline{
     }
     stages{
         stage("Check Into Directory"){
-            step{
+            steps{
                 sh "cd ./src/tests"
             }
         }
         stage("Install npm"){
-            step{
+            steps{
                 sh "npm install"
             }
         }
         stage("Run test in files"){
-            step{
+            steps{
                 sh "npm run test"
             }
         }
