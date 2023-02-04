@@ -5,7 +5,8 @@ pipeline{
             steps{
                 sh """
                   cd ./src/tests
-                  npm run tests
+                  npm install
+                  npm test
                 """
             }
         }
