@@ -2,7 +2,6 @@ pipeline{
     agent any
     options{
         disableConcurrentBuilds()
-        buildDiscarder(logRotator(numToKeepStr(5)))
     }
     stages{
         stage("Check Into Directory"){
