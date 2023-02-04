@@ -1,13 +1,23 @@
 pipeline{
     agent any
+    options{
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr(5)))
+    }
     stages{
-        stage("stage 1"){
-            steps{
-                sh """
-                  cd ./src/tests
-                  npm install
-                  npm test
-                """
+        stage("Check Into Directory"){
+            step{
+                sh "cd ./src/tests"
+            }
+        }
+        stage("Install npm"){
+            step{
+                sh "npm install"
+            }
+        }
+        stage("Run test in files"){
+            step{
+                sh "npm run test"
             }
         }
     }
