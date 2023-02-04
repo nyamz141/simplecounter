@@ -4,7 +4,7 @@ pipeline{
         stage("stage 1"){
             steps{
                 sh """
-                  cd /src/tests
+                  cd ./src/tests
                   npm run tests
                 """
             }
