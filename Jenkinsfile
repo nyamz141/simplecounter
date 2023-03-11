@@ -25,6 +25,7 @@ pipeline{
         stage("build docker image"){
             steps{
                 sh 'docker build -t munya141/simplecounter:latest .'
+                sh 'docker run -p "5200:80" munya141/simplecounter:latest'
             }
         }
         stage("push to docker hub"){
@@ -33,11 +34,6 @@ pipeline{
         	        sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
                     sh 'docker push munya141/simplecounter:latest'
                 }
-            }
-        }
-        stage("run app locally through docker compose"){
-            steps{
-                sh 'docker-compose up --build'
             }
         }
     }
