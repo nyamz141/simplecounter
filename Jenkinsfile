@@ -25,7 +25,6 @@ pipeline{
         stage("build docker image"){
             steps{
                 sh 'docker build -t munya141/simplecounter:latest .'
-                sh 'docker run -p "5200:80" munya141/simplecounter:latest'
             }
         }
         stage("push to docker hub"){
