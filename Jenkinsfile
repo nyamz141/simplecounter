@@ -22,7 +22,7 @@ pipeline{
                 sh "npm run test"
             }
         }
-        stage("build docker image from compose"){
+        stage("build docker image"){
             steps{
                 sh 'docker build -t munya141/simplecounter:latest .'
             }
@@ -31,8 +31,13 @@ pipeline{
             steps{
                 withCredentials([usernamePassword(credentialsId: 'DockerHubAuth', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
         	        sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                    sh 'docker push shanem/spring-petclinic:latest'
+                    sh 'docker push munya141/simplecounter:latest'
                 }
+            }
+        }
+        stage("run app locally through docker compose"){
+            steps{
+                sh 'docker-compose up --build'
             }
         }
     }
