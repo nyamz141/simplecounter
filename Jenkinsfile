@@ -35,5 +35,10 @@ pipeline{
                 }
             }
         }
+        stage("start kubernetes deployment"){
+            steps{
+                sh 'kubectl apply -f kubernetes/simple-counter-deployment.yml'
+            }
+        }
     }
 }

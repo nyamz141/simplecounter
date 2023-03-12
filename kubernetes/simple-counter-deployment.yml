@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-deployment
+  labels:
+    app: simple-counter-app
+    tier: frontend
+spec:
+  replicas: 5
+  template:
+    metadata:
+      name: counter-replica
+      labels:
+        app: simple-counter-pod
+        tier: front-end-app
+    spec:
+      containers:
+        - name: simple-counter
+          image:  munya141/simplecounter:latest
+          limits:
+  selector:
+    matchLabels:
+      app: simple-counter-pod
+      tier: front-end-app
