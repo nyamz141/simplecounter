@@ -35,12 +35,5 @@ pipeline{
                 }
             }
         }
-        stage("start kubernetes deployment"){
-            steps{
-                dir('kubernetes'){
-                    sh 'kubectl apply -f simple-counter-deployment.yml'
-                }
-            }
-        }
     }
 }
